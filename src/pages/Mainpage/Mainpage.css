@@ -1,0 +1,8 @@
+#mainSection {
+  padding-left: 240px;
+}
+.test {
+  height: 100px;
+  width: 150px;
+  border: 1px solid red;
+}
