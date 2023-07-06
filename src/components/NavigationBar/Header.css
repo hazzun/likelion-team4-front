@@ -1,9 +1,80 @@
 #header {
   height: 56px;
-  border: 1px solid black;
   position: fixed;
   width: 100%;
   top: 0px;
   z-index: 10;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerLeft {
+  margin-left: 24px;
+  display: flex;
+  gap: 30px;
+}
+.menuStyle {
+  margin-top: 1px;
+  font-size: large;
+}
+.headerMiddle {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 20px;
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+}
+.searchForm {
+  display: flex;
+  align-items: center;
+  width: 550px;
+  height: 40px;
+  border: 1px solid #d3d3d3;
+  font-size: 25px;
+  -webkit-border-radius: 200px 0 0 200px;
+  -moz-border-radius: 200px 0 0 200px;
+}
+.searchInput {
+  border: 1px solid #d3d3d3;
+  -webkit-border-radius: 200px 0 0 200px;
+  -moz-border-radius: 200px 0 0 200px;
+  background: none;
+  border: none;
+  width: 90%;
+  height: 100%;
+  padding-left: 15px;
+  font-size: 15px;
+}
+.searchInput:focus {
+  outline: none;
+}
+.searchBtn {
+  width: 60px;
+  height: 42px;
+  font-size: 20px;
+  border: 1px solid #d3d3d3;
+  border-left: 0px;
+  -webkit-border-radius: 0 200px 200px 0;
+  -moz-border-radius: 0 200px 200px 0;
+  background-color: #f8f8f8;
+}
+.voiceBtn {
+  padding-top: 3px;
+  font-size: 22px;
+}
+.headerRight {
+  display: flex;
+  gap: 25px;
+  font-size: 25px;
+  margin-right: 25px;
+}
+.profileImage {
+  width: 23px;
+  height: 23px;
+  border-radius: 100%;
+  border: 1px solid #d3d3d3;
 }
