@@ -3,10 +3,16 @@ import "./App.css";
 import Header from "./components/NavigationBar/Header";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import AfterLike from "./pages/AfterLikePage/AfterLike";
+import { useState } from "react";
+import SidebarValue from "./SidebarValue";
 
 function App() {
+  const [openSidebar, setOpenSidebar] = useState(true);
+  const handleSidebar = () => {
+    setOpenSidebar(!openSidebar);
+  };
   return (
-    <>
+    <SidebarValue.Provider value={{ openSidebar, handleSidebar }}>
       <Header />
       <main id="main">
         <Routes>
@@ -16,7 +22,7 @@ function App() {
           <Route path="/watch" element={<AfterLike />}></Route>
         </Routes>
       </main>
-    </>
+    </SidebarValue.Provider>
   );
 }
 

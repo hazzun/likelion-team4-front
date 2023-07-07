@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { SlMenu } from "react-icons/sl";
@@ -7,15 +7,19 @@ import { FiSearch } from "react-icons/fi";
 import { BsKeyboardFill } from "react-icons/bs";
 import { MdKeyboardVoice } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
-// import logo from "../../../public/logo.png";
+import SidebarValue from "../../SidebarValue";
 
 export default function Header() {
   return (
     <header id="header">
       <div className="headerLeft">
-        <button className="menuStyle">
-          <SlMenu />
-        </button>
+        <SidebarValue.Consumer>
+          {({ handleSidebar }) => (
+            <button className="menuStyle" onClick={handleSidebar}>
+              <SlMenu />
+            </button>
+          )}
+        </SidebarValue.Consumer>
         <Link to="/">
           <img alt="youtube" src={"./logo.png"} width={100} height={20} />
         </Link>
