@@ -1,6 +1,11 @@
 #mainSection {
   padding-left: 240px;
 }
+#mainSectionSmall {
+  padding-left: 64px;
+}
+.mainContent {
+}
 .test {
   height: 100px;
   width: 150px;

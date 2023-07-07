@@ -2,25 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Mainpage.css";
 import Sidebar from "../../components/NavigationBar/Sidebar";
+import SidebarValue from "../../SidebarValue";
 
 const Mainpage = () => {
   return (
-    <section id="mainSection">
-      <Sidebar />
-      <div>
-        <div>This is Mainpage</div>
-        <Link to="/watch">
-          <button>After Like</button>
-        </Link>
-        <div className="test">test</div>
-        <div className="test">test</div>
-        <div className="test">test</div>
-        <div className="test">test</div>
-        <div className="test">test</div>
-        <div className="test">test</div>
-        <div className="test">test</div>
-      </div>
-    </section>
+    <SidebarValue.Consumer>
+      {({ openSidebar }) => (
+        <section id={openSidebar ? "mainSection" : "mainSectionSmall"}>
+          <Sidebar />
+          <div className="mainContent">
+            <Link to="/watch">
+              <img src={"./afterlike.png"} />
+            </Link>
+          </div>
+        </section>
+      )}
+    </SidebarValue.Consumer>
   );
 };
 
