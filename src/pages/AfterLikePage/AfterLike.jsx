@@ -1,10 +1,37 @@
 import React from "react";
+import "./AfterLike.css"
+import DetailContent from "../../components/afterlike/DetailContent";
+import Relatedvideo from "../../components/afterlike/RelatedVideo";
+import Comment from "../../components/afterlike/Comment"
 
 const AfterLike = () => {
   return (
-    <div>
-      <h1>AfterLike M/V page</h1>
-    </div>
+      <>
+      
+      <div class="wrap">
+      
+      <div>
+      <DetailContent></DetailContent>
+      <Comment></Comment>
+      </div>
+
+      <div class="RelatedVideoList">
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      <Relatedvideo></Relatedvideo>
+      </div>
+      </div>
+   
+    </>
+
   );
 };
 
