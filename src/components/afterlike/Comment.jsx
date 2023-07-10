@@ -8,13 +8,13 @@ import {
   Profile_Input,
   Profile_Input_Button,
   Comment_Footer,
-} from './styledComponent2';
+} from "./Comment";
 
-import React, { useState } from 'react';
-import PersonalComment from './PersonalComment';
+import React, { useState } from "react";
+import PersonalComment from "./PersonalComment";
 
 export default function Comment() {
-  const [contents, setContents] = useState('');
+  const [contents, setContents] = useState("");
   const [comments, setComments] = useState([]);
 
   const onChangeContents = (event) => {
@@ -23,15 +23,15 @@ export default function Comment() {
 
   const onClickSubmit = () => {
     const newComment = {
-      name: '@team4',
-      time: '방금',
+      name: "@team4",
+      time: "방금",
       content: contents,
     };
 
     console.log(newComment); // 새로운 댓글 출력 혹은 원하는 동작 수행
 
     setComments((prevComments) => [...prevComments, newComment]); // 새로운 댓글 추가
-    setContents(''); // 입력 내용 초기화
+    setContents(""); // 입력 내용 초기화
   };
 
   return (
@@ -39,7 +39,7 @@ export default function Comment() {
       <Comment_Wrapper>
         <Comment_Header>
           <Comment_Title>댓글</Comment_Title>
-          <Comment_Count>{comments.length+4}개</Comment_Count>
+          <Comment_Count>{comments.length + 4}개</Comment_Count>
         </Comment_Header>
 
         <Comment_Body>
@@ -50,7 +50,9 @@ export default function Comment() {
             value={contents}
             onChange={onChangeContents}
           />
-          <Profile_Input_Button onClick={onClickSubmit}>댓글</Profile_Input_Button>
+          <Profile_Input_Button onClick={onClickSubmit}>
+            댓글
+          </Profile_Input_Button>
         </Comment_Body>
 
         <Comment_Footer>
