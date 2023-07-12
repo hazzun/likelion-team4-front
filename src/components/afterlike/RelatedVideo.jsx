@@ -5,25 +5,18 @@ import {
   Related_Video,
   Relatedvideo_content,
   Relatedvideocontent_Title,
-  Relatedvideocontent_name,
-  Relatedvideocontent_viewsDate,
-  Margin_bottom,
 } from "./RelatedVedio";
+import { Link } from "react-router-dom";
 
-function Relatedvideo() {
+function Relatedvideo({ data }) {
   return (
     <RelatedvideoItem>
-      <Related_Video></Related_Video>
+      <a href={`/watch/${data.id}`}>
+        <Related_Video src={data.thumbnail}></Related_Video>
+      </a>
 
       <Relatedvideo_content>
-        <Relatedvideocontent_Title>
-          Dua Lipa - Levitating Featuring DaBaby (Official Music Video)
-        </Relatedvideocontent_Title>
-        <Relatedvideocontent_name>Dua Lipa </Relatedvideocontent_name>
-        <Margin_bottom></Margin_bottom>
-        <Relatedvideocontent_viewsDate>
-          조회수 7.5억회 2년 전
-        </Relatedvideocontent_viewsDate>
+        <Relatedvideocontent_Title>{data.title}</Relatedvideocontent_Title>
       </Relatedvideo_content>
     </RelatedvideoItem>
   );

@@ -18,12 +18,20 @@ import { Link } from "react-router-dom";
 
 function DetailContent(props) {
   const [videoInfo, setVideoInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
   useEffect(() => {
     axios.get(`/api/videos/${props.id}/`).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setVideoInfo(response.data);
     });
   }, []);
+  useEffect(() => {
+    axios.get(`/api/users/`).then((response) => {
+      // console.log(response.data);
+      setUserInfo(response.data);
+    });
+  }, [videoInfo]);
+  console.log("go = ", userInfo);
   return (
     <>
       <Fullplayer>
@@ -43,9 +51,15 @@ function DetailContent(props) {
         <Detailcontent_Title>{videoInfo.title}</Detailcontent_Title>
 
         <Detailcontent_flex>
-          <Detailcontent_profile>
-            <image></image>
-          </Detailcontent_profile>
+          {userInfo ? (
+            <Detailcontent_profile>
+              {/* <image src={userInfo[props.userId - 1].profile_image} /> */}
+            </Detailcontent_profile>
+          ) : (
+            <Detailcontent_profile>
+              <p>terst</p>
+            </Detailcontent_profile>
+          )}
 
           <div>
             <Margin_bottom>starshipTV</Margin_bottom>

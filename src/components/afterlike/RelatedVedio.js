@@ -7,11 +7,10 @@ export const RelatedvideoItem = styled.div`
   margin-bottom: 8px;
 `;
 
-export const Related_Video = styled.video`
+export const Related_Video = styled.img`
   width: 168px;
   height: 94px;
   margin-bottom: 8px;
-  background-color: blue;
   border-radius: 8px;
 `;
 
@@ -66,9 +65,8 @@ export const Detailcontent_Title = styled.div`
 export const Detailcontent_profile = styled.div`
   width: 40px;
   height: 40px;
-  background-color: gold;
   border-radius: 50%;
-  margin-right: 8px;
+  object-fit: cover;
 `;
 
 export const Margin_bottom = styled.div`
@@ -100,8 +98,10 @@ export const Detailcontent_btn2 = styled.div`
 
 export const Detailcontent_playerContent = styled.button`
   background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
   width: 854px;
   margin-top: 20px;
-  padding: 8px;
+  padding: 20px;
   margin-bottom: 20px;
+  text-align: left;
 `;

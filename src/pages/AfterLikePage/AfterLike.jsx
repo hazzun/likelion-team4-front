@@ -9,33 +9,33 @@ import axios from "axios";
 const AfterLike = () => {
   let { id } = useParams();
   const [rdVideo, setRdVideo] = useState([]);
+  const [userId, setUserId] = useState([]);
   useEffect(() => {
     axios
-      .get("/api/rdvideos/")
-      .then((response) => console.log(response.data))
+      .get("/api/rdvideos/?video_id=2")
+      .then((response) => setRdVideo(response.data[0].recommended_videos))
       .catch((error) => error);
   }, []);
+  useEffect(() => {
+    axios
+      .get("/api/videos/")
+      .then((response) => setUserId(response.data[id - 2].user))
+      .catch((error) => error);
+  }, []);
+  // console.log(userId);
 
   return (
     <>
       <div class="wrap">
         <div>
-          <DetailContent id={id}></DetailContent>
+          <DetailContent id={id} userId={userId}></DetailContent>
           <Comment></Comment>
         </div>
 
         <div class="RelatedVideoList">
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
-          <Relatedvideo></Relatedvideo>
+          {rdVideo.map((data) => (
+            <Relatedvideo data={data}></Relatedvideo>
+          ))}
         </div>
       </div>
     </>
