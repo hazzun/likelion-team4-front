@@ -25,16 +25,13 @@ const Profile_Comment = styled.div`
   display: block;
 `;
 const Preference = styled.div``;
-export default function PersonalComment({ name, time, content }) {
+export default function PersonalComment({ name, content }) {
   return (
     <>
       <PersonalComment_Wrapper>
-        <Profile_Picture></Profile_Picture>
+        <Profile_Picture>@{name}</Profile_Picture>
         <Profile_Text>
-          <Profile_Text_Up>
-            <Profile_Text_Name>{name}</Profile_Text_Name>
-            <Profile_Text_Time>{time}</Profile_Text_Time>
-          </Profile_Text_Up>
+          <Profile_Text_Up></Profile_Text_Up>
           <Profile_Comment>{content}</Profile_Comment>
         </Profile_Text>
       </PersonalComment_Wrapper>

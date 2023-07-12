@@ -8,30 +8,45 @@ import {
   Profile_Input,
   Profile_Input_Button,
   Comment_Footer,
+  NameInput,
 } from "./Comment";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PersonalComment from "./PersonalComment";
+import axios from "axios";
 
 export default function Comment() {
   const [contents, setContents] = useState("");
   const [comments, setComments] = useState([]);
+  const [username, setUsername] = useState([]);
 
+  useEffect(() => {
+    axios.get("/api/comments/").then((response) => setComments(response.data));
+  });
   const onChangeContents = (event) => {
     setContents(event.target.value);
   };
+  const handleNameChange = (e) => {
+    setUsername(e.target.value);
+  };
 
   const onClickSubmit = () => {
-    const newComment = {
-      name: "@team4",
-      time: "방금",
-      content: contents,
-    };
-
-    console.log(newComment); // 새로운 댓글 출력 혹은 원하는 동작 수행
-
-    setComments((prevComments) => [...prevComments, newComment]); // 새로운 댓글 추가
+    axios
+      .post("/api/comments/", {
+        id: 1,
+        content: contents,
+        like_num: username,
+        video: 2,
+        user: 2,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     setContents(""); // 입력 내용 초기화
+    setUsername(""); // 입력 내용 초기화
   };
 
   return (
@@ -39,11 +54,18 @@ export default function Comment() {
       <Comment_Wrapper>
         <Comment_Header>
           <Comment_Title>댓글</Comment_Title>
-          <Comment_Count>{comments.length + 4}개</Comment_Count>
+          <Comment_Count>{comments.length}개</Comment_Count>
         </Comment_Header>
 
         <Comment_Body>
-          <Profile_Picture></Profile_Picture>
+          <Profile_Picture>
+            <NameInput
+              type="text"
+              placeholder="이름 입력"
+              value={username}
+              onChange={handleNameChange}
+            />
+          </Profile_Picture>
           <Profile_Input
             type="text"
             placeholder="댓글 추가..."
@@ -56,31 +78,10 @@ export default function Comment() {
         </Comment_Body>
 
         <Comment_Footer>
-          <PersonalComment
-            name="@병장 2호봉"
-            time="4개월전"
-            content="이 노래 덕분에 군생활을 버텼어요"
-          ></PersonalComment>
-          <PersonalComment
-            name="@Jack Love"
-            time="10개월전"
-            content="Music Producer killed in this!!"
-          ></PersonalComment>
-          <PersonalComment
-            name="@멋사회장님"
-            time="1개월전"
-            content="멋사보다 아이브가 좋아요 ! "
-          ></PersonalComment>
-          <PersonalComment
-            name="@team4"
-            time="10개월전"
-            content="Music Producer killed in this!!"
-          ></PersonalComment>
           {comments.map((comment, index) => (
             <PersonalComment
               key={index}
-              name={comment.name}
-              time={comment.time}
+              name={comment.like_num}
               content={comment.content}
             />
           ))}
