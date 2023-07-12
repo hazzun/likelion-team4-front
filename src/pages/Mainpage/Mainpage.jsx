@@ -36,7 +36,7 @@ const Mainpage = () => {
           <MainPlayList>
             {videos.map((data) => (
               <VideoInfo key={data.id}>
-                <Link to={data.video_url}>
+                <Link to={`watch/${data.id}`}>
                   <img src={data.thumbnail} class="thumbnail" alt="thumbnail" />
                 </Link>
                 <div class="content">

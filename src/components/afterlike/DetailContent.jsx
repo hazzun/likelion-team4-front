@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Fullplayer,
   Margin_bottom,
@@ -13,13 +13,34 @@ import {
 } from "./RelatedVedio";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-function DetailContent() {
+function DetailContent(props) {
+  const [videoInfo, setVideoInfo] = useState([]);
+  useEffect(() => {
+    axios.get(`/api/videos/${props.id}/`).then((response) => {
+      console.log(response.data);
+      setVideoInfo(response.data);
+    });
+  }, []);
   return (
     <>
       <Fullplayer>
-        <Player src={""}>동영상</Player>
-        <Detailcontent_Title>IVE 아이브 'After LIKE' MV</Detailcontent_Title>
+        {/* <Link to={videoInfo.video_url}>
+          <Player src={videoInfo.thumbnail}>{}</Player>
+        </Link> */}
+        <iframe
+          id={videoInfo.id}
+          title={videoInfo.title}
+          width="854px"
+          height="480px"
+          src={videoInfo.video_url}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <Detailcontent_Title>{videoInfo.title}</Detailcontent_Title>
 
         <Detailcontent_flex>
           <Detailcontent_profile>
@@ -57,12 +78,7 @@ function DetailContent() {
         </Detailcontent_flex>
 
         <Detailcontent_playerContent>
-          <p>
-            조회수 <strong>217,261,706</strong>회 2022. 8. 22.{" "}
-            <strong>뮤직비디오 인기 16위</strong>
-          </p>
-          <p>IVE Twitter</p>
-          <p>더보기</p>
+          <p>{videoInfo.description}</p>
         </Detailcontent_playerContent>
       </Fullplayer>
     </>
