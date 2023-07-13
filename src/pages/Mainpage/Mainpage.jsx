@@ -9,6 +9,8 @@ import axios from "axios";
 const Mainpage = () => {
   const [videos, setVideos] = useState([]);
   const [users, setUsers] = useState([]);
+  const [videosInUser, setVideosInUser] = useState([]);
+
   useEffect(() => {
     axios
       .get("/api/videos/")
@@ -18,41 +20,57 @@ const Mainpage = () => {
       })
       .catch((error) => console.log(error));
   }, []);
+
   useEffect(() => {
     axios
       .get("/api/users/")
       .then((response) => {
         setUsers(response.data);
-        console.log(response.data[9].profile_image);
       })
       .catch((error) => console.log(error));
   }, []);
 
+  useEffect(() => {
+    if (users && videos) {
+      const newVideos = videos.map((video) => {
+        const user = users.filter((u) => u.id === video.user);
+        return {
+          ...video,
+          user: user.length === 1 ? user[0] : video.user,
+        };
+      });
+      setVideosInUser(newVideos);
+      console.log("user정보 추가 -> ", videosInUser);
+    }
+  }, [videos, users]);
+  // console.log(videos);
   return (
     <SidebarValue.Consumer>
       {({ openSidebar }) => (
         <section id={openSidebar ? "mainSection" : "mainSectionSmall"}>
           <Sidebar />
           <MainPlayList>
-            {videos.map((data) => (
+            {videosInUser.map((data) => (
               <VideoInfo key={data.id}>
                 <Link to={`watch/${data.id}`}>
                   <img src={data.thumbnail} class="thumbnail" alt="thumbnail" />
                 </Link>
-                <div class="content">
-                  <img
-                    src={users[data.user - 1].profile_image}
-                    class="channel-icon"
-                    alt="channelicon"
-                  />
-                  <div class="info">
-                    <Link to="./watch" style={{ textDecoration: "none" }}>
-                      <h1 class="title">{data.title}</h1>
-                    </Link>
-                    <p class="channel-name">{users[data.user - 1].name}</p>
-                    <p class="channel-view">{`조회수 ${data.view_count} 회`}</p>
+                {data.user instanceof Object && (
+                  <div class="content">
+                    <img
+                      src={data.user.profile_image}
+                      class="channel-icon"
+                      alt="channelicon"
+                    />
+                    <div class="info">
+                      <Link to="./watch" style={{ textDecoration: "none" }}>
+                        <h1 class="title">{data.title}</h1>
+                      </Link>
+                      <p class="channel-name">{data.user.name}</p>
+                      <p class="channel-view">{`조회수 ${data.view_count} 회`}</p>
+                    </div>
                   </div>
-                </div>
+                )}
               </VideoInfo>
             ))}
           </MainPlayList>

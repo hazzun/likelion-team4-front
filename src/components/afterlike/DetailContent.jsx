@@ -26,12 +26,14 @@ function DetailContent(props) {
     });
   }, []);
   useEffect(() => {
-    axios.get(`/api/users/`).then((response) => {
-      // console.log(response.data);
-      setUserInfo(response.data);
-    });
+    if (videoInfo?.user) {
+      axios.get(`/api/users/${videoInfo.user}`).then((response) => {
+        setUserInfo(response.data);
+      });
+    }
   }, [videoInfo]);
-  console.log("go = ", userInfo);
+  console.log("vidoe = ", videoInfo);
+  console.log("userInfo = ", userInfo);
   return (
     <>
       <Fullplayer>
@@ -53,7 +55,7 @@ function DetailContent(props) {
         <Detailcontent_flex>
           {userInfo ? (
             <Detailcontent_profile>
-              {/* <image src={userInfo[props.userId - 1].profile_image} /> */}
+              <img src={userInfo.profile_image} width={40} height={40} />
             </Detailcontent_profile>
           ) : (
             <Detailcontent_profile>
