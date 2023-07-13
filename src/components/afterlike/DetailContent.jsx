@@ -56,16 +56,18 @@ function DetailContent(props) {
         <Detailcontent_Title>{videoInfo.title}</Detailcontent_Title>
 
         <Detailcontent_flex>
-          {userInfo.profile_image && (
-            <Detailcontent_profile
-              src={convertImage(userInfo.profile_image)}
-            ></Detailcontent_profile>
-          )}
+          {userInfo && (
+            <>
+              <Detailcontent_profile
+                src={convertImage(userInfo.profile_image ?? "")}
+              ></Detailcontent_profile>
 
-          <div>
-            <Margin_bottom>{userInfo.name}</Margin_bottom>
-            <p>구독자 600만명</p>
-          </div>
+              <div>
+                <Margin_bottom>{userInfo.name ?? ""}</Margin_bottom>
+                <p>구독자 600만명</p>
+              </div>
+            </>
+          )}
 
           <Detailcontent_btn>구독</Detailcontent_btn>
 
