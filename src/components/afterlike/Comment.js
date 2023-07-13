@@ -42,6 +42,7 @@ export const Profile_Picture = styled.div`
   border: 1px solid red;
   text-align: center;
   margin: 10px;
+  font-size: 12px;
 `;
 
 export const NameInput = styled.input`

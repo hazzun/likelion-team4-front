@@ -23,6 +23,7 @@ const Profile_Text = styled.div`
 `;
 const Profile_Comment = styled.div`
   display: block;
+  font-size: 15px;
 `;
 const Preference = styled.div``;
 export default function PersonalComment({ name, content }) {
@@ -31,7 +32,6 @@ export default function PersonalComment({ name, content }) {
       <PersonalComment_Wrapper>
         <Profile_Picture>@{name}</Profile_Picture>
         <Profile_Text>
-          <Profile_Text_Up></Profile_Text_Up>
           <Profile_Comment>{content}</Profile_Comment>
         </Profile_Text>
       </PersonalComment_Wrapper>
