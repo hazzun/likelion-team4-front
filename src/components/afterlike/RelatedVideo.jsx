@@ -7,12 +7,13 @@ import {
   Relatedvideocontent_Title,
 } from "./RelatedVedio";
 import { Link } from "react-router-dom";
+import { convertImage } from "../../utils/convertImage";
 
 function Relatedvideo({ data }) {
   return (
     <RelatedvideoItem>
       <a href={`/watch/${data.id}`}>
-        <Related_Video src={data.thumbnail}></Related_Video>
+        <Related_Video src={convertImage(data.thumbnail)}></Related_Video>
       </a>
 
       <Relatedvideo_content>

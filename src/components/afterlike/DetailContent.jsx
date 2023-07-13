@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { convertImage } from "../../utils/convertImage";
 
 function DetailContent(props) {
   const [videoInfo, setVideoInfo] = useState([]);
@@ -55,14 +56,10 @@ function DetailContent(props) {
         <Detailcontent_Title>{videoInfo.title}</Detailcontent_Title>
 
         <Detailcontent_flex>
-          {userInfo ? (
+          {userInfo && (
             <Detailcontent_profile
               src={userInfo.profile_image}
             ></Detailcontent_profile>
-          ) : (
-            <Detailcontent_profile>
-              <p>terst</p>
-            </Detailcontent_profile>
           )}
 
           <div>
