@@ -25,7 +25,7 @@ export default function Comment() {
     axios
       .get(`${PROXY}/api/comments/`)
       .then((response) => setComments(response.data));
-  });
+  }, []);
   const onChangeContents = (event) => {
     setContents(event.target.value);
   };
@@ -36,9 +36,9 @@ export default function Comment() {
   const onClickSubmit = () => {
     axios
       .post(`${PROXY}/api/comments/`, {
-        id: 1,
+        name: username,
         content: contents,
-        like_num: username,
+        like_num: 99,
         video: 2,
         user: 2,
       })
@@ -84,7 +84,7 @@ export default function Comment() {
           {comments.map((comment, index) => (
             <PersonalComment
               key={index}
-              name={comment.like_num}
+              name={comment.name}
               content={comment.content}
             />
           ))}
