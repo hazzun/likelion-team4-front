@@ -1,5 +1,5 @@
 {
-  "proxy": "http://3.34.161.169/",
+  "proxy": "http://3.34.161.169",
   "name": "woowa-team4",
   "version": "0.1.0",
   "private": true,
