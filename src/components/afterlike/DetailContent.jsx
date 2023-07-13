@@ -63,7 +63,7 @@ function DetailContent(props) {
           )}
 
           <div>
-            <Margin_bottom>starshipTV</Margin_bottom>
+            <Margin_bottom>{userInfo.name}</Margin_bottom>
             <p>구독자 600만명</p>
           </div>
 
