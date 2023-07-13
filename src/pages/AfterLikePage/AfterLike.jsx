@@ -10,15 +10,17 @@ const AfterLike = () => {
   let { id } = useParams();
   const [rdVideo, setRdVideo] = useState([]);
   const [userId, setUserId] = useState([]);
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+
   useEffect(() => {
     axios
-      .get("/api/rdvideos/?video_id=2")
+      .get(`${PROXY}/api/rdvideos/?video_id=2`)
       .then((response) => setRdVideo(response.data[0].recommended_videos))
       .catch((error) => error);
   }, []);
   useEffect(() => {
     axios
-      .get("/api/videos/")
+      .get(`${PROXY}/api/videos/`)
       .then((response) => setUserId(response.data[id - 2].user))
       .catch((error) => error);
   }, []);

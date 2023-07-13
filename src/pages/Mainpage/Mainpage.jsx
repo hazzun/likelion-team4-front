@@ -10,10 +10,11 @@ const Mainpage = () => {
   const [videos, setVideos] = useState([]);
   const [users, setUsers] = useState([]);
   const [videosInUser, setVideosInUser] = useState([]);
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
 
   useEffect(() => {
     axios
-      .get("/api/videos/")
+      .get(`${PROXY}/api/videos/`)
       .then((response) => {
         setVideos(response.data);
         console.log(response.data);
@@ -23,7 +24,7 @@ const Mainpage = () => {
 
   useEffect(() => {
     axios
-      .get("/api/users/")
+      .get(`${PROXY}/api/users/`)
       .then((response) => {
         setUsers(response.data);
       })

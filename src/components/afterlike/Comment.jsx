@@ -19,9 +19,12 @@ export default function Comment() {
   const [contents, setContents] = useState("");
   const [comments, setComments] = useState([]);
   const [username, setUsername] = useState([]);
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
 
   useEffect(() => {
-    axios.get("/api/comments/").then((response) => setComments(response.data));
+    axios
+      .get(`${PROXY}/api/comments/`)
+      .then((response) => setComments(response.data));
   });
   const onChangeContents = (event) => {
     setContents(event.target.value);
@@ -32,7 +35,7 @@ export default function Comment() {
 
   const onClickSubmit = () => {
     axios
-      .post("/api/comments/", {
+      .post(`${PROXY}/api/comments/`, {
         id: 1,
         content: contents,
         like_num: username,
