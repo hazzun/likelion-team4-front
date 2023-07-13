@@ -25,7 +25,7 @@ export default function Comment() {
     axios
       .get(`${PROXY}/api/comments/`)
       .then((response) => setComments(response.data));
-  }, []);
+  }, [comments]);
   const onChangeContents = (event) => {
     setContents(event.target.value);
   };

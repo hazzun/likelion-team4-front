@@ -21,7 +21,7 @@ export default function Header() {
           )}
         </SidebarValue.Consumer>
         <Link to="/">
-          <img alt="youtube" src={"./logo.png"} width={100} height={20} />
+          <img alt="youtube" src={"logo.png"} width={100} height={20} />
         </Link>
       </div>
       <div className="headerMiddle">

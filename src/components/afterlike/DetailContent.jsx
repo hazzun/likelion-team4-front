@@ -19,15 +19,17 @@ import { Link } from "react-router-dom";
 function DetailContent(props) {
   const [videoInfo, setVideoInfo] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+
   useEffect(() => {
-    axios.get(`/api/videos/${props.id}/`).then((response) => {
+    axios.get(`${PROXY}/api/videos/${props.id}/`).then((response) => {
       // console.log(response.data);
       setVideoInfo(response.data);
     });
   }, []);
   useEffect(() => {
     if (videoInfo?.user) {
-      axios.get(`/api/users/${videoInfo.user}`).then((response) => {
+      axios.get(`${PROXY}/api/users/${videoInfo.user}`).then((response) => {
         setUserInfo(response.data);
       });
     }
@@ -54,9 +56,9 @@ function DetailContent(props) {
 
         <Detailcontent_flex>
           {userInfo ? (
-            <Detailcontent_profile>
-              <img src={userInfo.profile_image} width={40} height={40} />
-            </Detailcontent_profile>
+            <Detailcontent_profile
+              src={userInfo.profile_image}
+            ></Detailcontent_profile>
           ) : (
             <Detailcontent_profile>
               <p>terst</p>

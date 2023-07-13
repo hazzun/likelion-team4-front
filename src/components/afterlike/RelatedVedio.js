@@ -62,11 +62,12 @@ export const Detailcontent_Title = styled.div`
   font-weight: 500;
 `;
 
-export const Detailcontent_profile = styled.div`
+export const Detailcontent_profile = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 10px;
 `;
 
 export const Margin_bottom = styled.div`
