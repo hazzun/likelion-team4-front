@@ -5,6 +5,7 @@ import Sidebar from "../../components/NavigationBar/Sidebar";
 import SidebarValue from "../../SidebarValue";
 import styled from "styled-components";
 import axios from "axios";
+import { convertImage } from "../../utils/convertImage";
 
 const Mainpage = () => {
   const [videos, setVideos] = useState([]);
@@ -54,12 +55,16 @@ const Mainpage = () => {
             {videosInUser.map((data) => (
               <VideoInfo key={data.id}>
                 <Link to={`watch/${data.id}`}>
-                  <img src={data.thumbnail} class="thumbnail" alt="thumbnail" />
+                  <img
+                    src={convertImage(data.thumbnail)}
+                    class="thumbnail"
+                    alt="thumbnail"
+                  />
                 </Link>
                 {data.user instanceof Object && (
                   <div class="content">
                     <img
-                      src={data.user.profile_image}
+                      src={convertImage(data.user.profile_image)}
                       class="channel-icon"
                       alt="channelicon"
                     />
