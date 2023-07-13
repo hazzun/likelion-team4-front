@@ -35,7 +35,7 @@ function DetailContent(props) {
       });
     }
   }, [videoInfo]);
-  console.log("vidoe = ", videoInfo);
+  // console.log("vidoe = ", videoInfo);
   console.log("userInfo = ", userInfo);
   return (
     <>
@@ -56,9 +56,9 @@ function DetailContent(props) {
         <Detailcontent_Title>{videoInfo.title}</Detailcontent_Title>
 
         <Detailcontent_flex>
-          {userInfo && (
+          {userInfo.profile_image && (
             <Detailcontent_profile
-              src={userInfo.profile_image}
+              src={convertImage(userInfo.profile_image)}
             ></Detailcontent_profile>
           )}
 
