@@ -30,7 +30,7 @@ function DetailContent(props) {
   }, []);
   useEffect(() => {
     if (videoInfo?.user) {
-      axios.get(`${PROXY}/api/users/${videoInfo.user}`).then((response) => {
+      axios.get(`${PROXY}/api/users/${videoInfo.user}/`).then((response) => {
         setUserInfo(response.data);
       });
     }
