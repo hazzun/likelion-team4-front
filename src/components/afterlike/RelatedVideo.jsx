@@ -14,7 +14,7 @@ function Relatedvideo({ data }) {
 
   return (
     <RelatedvideoItem>
-      <a href={`${PROXY}/${data.id}`}>
+      <a href={`watch/${data.id}`}>
         <Related_Video src={convertImage(data.thumbnail)}></Related_Video>
       </a>
 
