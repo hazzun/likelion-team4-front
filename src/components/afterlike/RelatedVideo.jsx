@@ -10,9 +10,11 @@ import { Link } from "react-router-dom";
 import { convertImage } from "../../utils/convertImage";
 
 function Relatedvideo({ data }) {
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+
   return (
     <RelatedvideoItem>
-      <a href={`/watch/${data.id}`}>
+      <a href={`${PROXY}/watch/${data.id}`}>
         <Related_Video src={convertImage(data.thumbnail)}></Related_Video>
       </a>
 

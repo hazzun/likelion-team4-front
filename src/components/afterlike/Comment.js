@@ -64,6 +64,7 @@ export const Profile_Input_Button = styled.button`
   background-color: white;
   padding: 5px 10px;
   border-radius: 4px;
+  width: 50px;
 
   &:hover {
     background-color: lightgray;
