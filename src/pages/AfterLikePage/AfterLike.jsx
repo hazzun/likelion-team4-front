@@ -24,7 +24,7 @@ const AfterLike = () => {
       .then((response) => setUserId(response.data[id - 2].user))
       .catch((error) => error);
   }, []);
-  // console.log(userId);
+  console.log("rdvideo ==> ", rdVideo);
 
   return (
     <>
@@ -35,9 +35,7 @@ const AfterLike = () => {
         </div>
 
         <div class="RelatedVideoList">
-          {rdVideo.map((data) => (
-            <Relatedvideo data={data}></Relatedvideo>
-          ))}
+          <Relatedvideo rdVideo={rdVideo}></Relatedvideo>
         </div>
       </div>
     </>

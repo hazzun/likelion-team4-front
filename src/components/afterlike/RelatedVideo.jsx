@@ -9,20 +9,25 @@ import {
 import { Link } from "react-router-dom";
 import { convertImage } from "../../utils/convertImage";
 
-function Relatedvideo({ data }) {
+const Relatedvideo = ({ rdVideo }) => {
   const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+  // Object.entries(rdVideo);
 
   return (
-    <RelatedvideoItem>
-      <Link to={`../watch/${data.id}`}>
-        <Related_Video src={convertImage(data.thumbnail)}></Related_Video>
-      </Link>
+    <>
+      {rdVideo.map((item, index) => (
+        <RelatedvideoItem key={index}>
+          <a href={`../watch/${item.id}`}>
+            <Related_Video src={convertImage(item.thumbnail)}></Related_Video>
+          </a>
 
-      <Relatedvideo_content>
-        <Relatedvideocontent_Title>{data.title}</Relatedvideocontent_Title>
-      </Relatedvideo_content>
-    </RelatedvideoItem>
+          <Relatedvideo_content>
+            <Relatedvideocontent_Title>{item.title}</Relatedvideocontent_Title>
+          </Relatedvideo_content>
+        </RelatedvideoItem>
+      ))}
+    </>
   );
-}
+};
 
 export default Relatedvideo;
