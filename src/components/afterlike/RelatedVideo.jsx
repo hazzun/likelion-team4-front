@@ -14,9 +14,9 @@ function Relatedvideo({ data }) {
 
   return (
     <RelatedvideoItem>
-      <a href={`./${data.id}`}>
+      <Link to={`./${data.id}`}>
         <Related_Video src={convertImage(data.thumbnail)}></Related_Video>
-      </a>
+      </Link>
 
       <Relatedvideo_content>
         <Relatedvideocontent_Title>{data.title}</Relatedvideocontent_Title>
